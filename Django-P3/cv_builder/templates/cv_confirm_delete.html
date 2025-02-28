@@ -1,0 +1,91 @@
+{% block content %}
+    <style>
+        /* Centering the container */
+        .delete-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f8f9fa;
+        }
+
+        /* Card styling */
+        .delete-card {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+        }
+
+        /* Header styling */
+        .delete-header {
+            font-size: 24px;
+            font-weight: bold;
+            color: #dc3545;
+            margin-bottom: 10px;
+        }
+
+        /* Text styling */
+        .delete-text {
+            font-size: 18px;
+            color: #6c757d;
+            margin-bottom: 20px;
+        }
+
+        /* Button container */
+        .delete-btn-group {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* Custom buttons */
+        .btn-danger {
+            background: #dc3545;
+            border: none;
+            padding: 10px 25px;
+            font-size: 16px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-danger:hover {
+            background: #b02a37;
+            transform: scale(1.05);
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            border: none;
+            padding: 10px 25px;
+            font-size: 16px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: #545b62;
+            transform: scale(1.05);
+        }
+    </style>
+
+    <div class="delete-container">
+        <div class="delete-card">
+            <h2 class="delete-header">Delete Confirmation</h2>
+            <p class="delete-text">
+                Are you sure you want to delete <strong>{{ cv.full_name }}</strong>'s CV?
+                <br>This action is <strong>permanent</strong> and cannot be undone.
+            </p>
+
+            <form method="POST">
+                {% csrf_token %}
+                <div class="delete-btn-group">
+                    <button type="submit" class="btn btn-danger">Yes, Delete</button>
+                    <a href="{% url 'cv_list' %}" class="btn btn-secondary">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

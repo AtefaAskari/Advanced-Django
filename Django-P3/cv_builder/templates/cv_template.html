@@ -1,0 +1,171 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Professional CV</title>
+
+    <style>
+        /* Page styling */
+        @page {
+            size: A4;
+            margin: 0mm;
+        }
+
+        body {
+            font-family: "Arial", sans-serif;
+            background: #f0f2f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .cv-container {
+            background: white;
+            width: 800px;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Header styling */
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #343a40;
+            color: white;
+            padding: 20px;
+            border-radius: 8px 8px 0 0;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            margin: 0;
+            text-transform: uppercase;
+        }
+
+        /* Profile picture */
+        .profile-picture img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid white;
+        }
+
+        /* Contact info */
+        .contact-info {
+            text-align: center;
+            margin: 20px 0;
+            font-size: 16px;
+            color: #555;
+        }
+
+        .contact-info h3 {
+            margin: 5px 0;
+            font-weight: normal;
+        }
+
+        /* Section styling */
+        .section {
+            margin-bottom: 20px;
+        }
+
+        .section h2 {
+            color: #343a40;
+            font-size: 22px;
+            border-left: 4px solid #007bff;
+            padding-left: 10px;
+            margin-bottom: 10px;
+        }
+
+        .section p {
+            font-size: 16px;
+            color: #444;
+        }
+
+        .experience, .education {
+            list-style: none;
+            padding: 0;
+        }
+
+        .experience li, .education li {
+            padding: 8px 12px;
+            border-left: 4px solid #007bff;
+            margin-bottom: 8px;
+            background: #f8f9fa;
+            border-radius: 4px;
+        }
+
+        /* Social link */
+        .social-link a {
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .social-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="cv-container">
+        
+        <!-- Header -->
+        <div class="header">
+            <h1>{{ profile.full_name }}</h1>
+            <div class="profile-picture">
+                {% if profile.profile_picture %}
+                    <img src="{{ profile.profile_picture.url }}" alt="Profile Picture">
+                {% else %}
+                    <img src="{% static 'cv_default.jpg' %}" alt="Default Profile Picture">
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="contact-info">
+            <h3>Email: {{ profile.email }}</h3>
+            <h3>Phone: {{ profile.phone }}</h3>
+            <h3>Address: {{ profile.address }}</h3>
+        </div>
+
+        <!-- Sections -->
+        <div class="section">
+            <h2>Bio</h2>
+            <p>{{ profile.summary }}</p>
+        </div>
+
+        <div class="section">
+            <h2>Experience</h2>
+            <ul class="experience">
+                <li>{{ profile.experience }}</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Education</h2>
+            <ul class="education">
+                <li>{{ profile.degree }} from {{ profile.university }}</li>
+                <li>School: {{ profile.school }}</li>
+            </ul>
+        </div>
+
+        <div class="section social-link">
+            <h2>Social Link</h2>
+            <p><a href="{{ profile.social_link }}" target="_blank">{{ profile.social_link }}</a></p>
+        </div>
+
+        {% include 'cv_list_button.html' %}
+    </div>
+</body>
+</html>

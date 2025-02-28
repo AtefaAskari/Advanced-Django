@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Build Your CV</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+            color: #333;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #2c3e50;
+            padding: 15px 50px;
+            color: white;
+        }
+        
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+        
+        .hero {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 80vh;
+            background: linear-gradient(135deg, #3498db, #8e44ad);
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .hero h1 {
+            font-size: 50px;
+            margin-bottom: 10px;
+        }
+        
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        
+        .hero .cta-btn {
+            background:rgb(41, 175, 220);
+            padding: 15px 30px;
+            color: white;
+            font-size: 18px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        
+        .hero .cta-btn:hover {
+            background:rgb(24, 114, 130);
+        }
+        
+        .features {
+            display: flex;
+            justify-content: space-around;
+            padding: 50px 10%;
+            text-align: center;
+        }
+        
+        .feature-box {
+            width: 30%;
+            padding: 20px;
+            background:rgb(175, 233, 248);
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(66, 64, 64, 0.1);
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="navbar">
+        <div class="logo">CV Builder</div>
+        <div>
+            <a href="#">Home</a>
+            <a href="#features">Features</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </div>
+    
+    <div class="hero">
+        <h1>Build Your Perfect CV</h1>
+        <p>Create a professional resume in minutes and boost your career.</p>
+        <a href="{% url 'sbumit_cv' %}" class="cta-btn">Get Started</a>
+    </div>
+    
+    <div class="features" id="features">
+        <div class="feature-box">
+            <h3>Easy to Use</h3>
+            <p>Simple and intuitive interface to create your CV hassle-free.</p>
+        </div>
+        <div class="feature-box">
+            <h3>Customizable Templates</h3>
+            <p>Choose from a variety of professional templates.</p>
+        </div>
+        <div class="feature-box">
+            <h3>Download & Share</h3>
+            <p>Download your CV in PDF format and share it easily.</p>
+        </div>
+    </div>
+
+</body>
+</html>
